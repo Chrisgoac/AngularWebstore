@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-semibold">Register</h1>
           </div>
           <div class="divide-y bg-gray-800">
-            <form class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+            <form #registerForm="ngForm" class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
               <div class="relative">
                 <input autocomplete="off" required id="username" name="username" type="text" class="rounded bg-gray-700 peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Username" />
                 <label for="username" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:ms-0 peer-focus:text-gray-300 peer-focus:text-sm">Username</label>
