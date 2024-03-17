@@ -8,6 +8,8 @@ import { Categories } from '../models/categories.model';
 })
 export class ProductService {
 
+  productosEnCarrito: any[] = [];
+
   constructor() { }
 
   private products: Products[] = [
@@ -24,6 +26,35 @@ export class ProductService {
     new Products(11, "Blender", "Versatile blender for making smoothies, soups, and sauces.", "https://via.placeholder.com/150", 60, new Categories(3, "Kitchen Appliances"), false),
     new Products(12, "Fitness Tracker", "Activity tracker with heart rate monitoring and sleep tracking features.", "https://via.placeholder.com/150", 150, new Categories(1, "Electronics"), false)
   ];
+
+  agregarAlCarrito(producto: any): void {
+    // Verificar si el producto ya está en el carrito
+    const productoExistente = this.productosEnCarrito.find(p => p.id === producto.id);
+    if (productoExistente) {
+      // Incrementar la cantidad si el producto ya está en el carrito
+      productoExistente.cantidad++;
+    } else {
+      // Agregar el producto al carrito si no está presente
+      this.productosEnCarrito.push({ ...producto, cantidad: 1 });
+    }
+  }
+
+  limpiarCarrito(): void {
+    // Limpiar todos los productos del carrito
+    this.productosEnCarrito = [];
+  }
+
+  quitarProductoDeCarrito(producto: any): void {
+    const index = this.productosEnCarrito.findIndex(p => p.id === producto.id);
+    if (index !== -1) {
+      // Decrementar la cantidad del producto en el carrito
+      this.productosEnCarrito[index].cantidad--;
+      if (this.productosEnCarrito[index].cantidad === 0) {
+        // Si la cantidad llega a cero, eliminar el producto del carrito
+        this.productosEnCarrito.splice(index, 1);
+      }
+    }
+  }
 
   getProducts(): Observable<Products[]> {
     return of(this.products);

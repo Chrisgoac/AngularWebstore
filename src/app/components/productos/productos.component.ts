@@ -31,6 +31,10 @@ export class ProductosComponent implements OnInit {
     });
   }
 
+  agregarAlCarrito(producto: any): void {
+    this.productService.agregarAlCarrito(producto);
+  }
+
   loadProducts(): void {
     this.productService.getProducts().subscribe((products: Products[]) => {
       this.products = products;

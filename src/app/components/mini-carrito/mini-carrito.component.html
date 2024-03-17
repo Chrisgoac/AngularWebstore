@@ -1,0 +1,15 @@
+<div class="p-4">
+      <h3 class="text-lg font-semibold mb-4 text-white">Resumen del Carrito</h3>
+      <hr>
+      <!-- Aquí se mostrará el resumen del carrito -->
+      <div *ngFor="let item of productosEnCarrito" class="mb-4">
+        <div class="flex justify-between mb-1 mt-2 text-gray-200">
+          <span>{{ item._name }}</span>
+        </div>
+        <div class="flex justify-between text-gray-200 text-sm">
+          <span>{{ item._price | currency }}</span>
+        </div>
+        <hr class="mt-2">
+      </div>
+</div>
+  

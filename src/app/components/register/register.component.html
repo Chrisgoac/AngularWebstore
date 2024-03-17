@@ -1,84 +1,114 @@
 <div class="min-h-screen bg-gray-900 py-6 flex flex-col justify-center sm:py-12">
-    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
-      </div>
-      <div class="relative px-4 py-10 bg-gray-800 shadow-lg sm:rounded-3xl sm:p-20">
-  
-        <div class="max-w-md mx-auto">
-          <div>
-            <h1 class="text-2xl font-semibold">Register</h1>
-          </div>
-          <div class="divide-y bg-gray-800">
-            <form #registerForm="ngForm" class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-              <div class="relative">
-                <input autocomplete="off" required id="username" name="username" type="text" class="rounded bg-gray-700 peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Username" />
-                <label for="username" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:ms-0 peer-focus:text-gray-300 peer-focus:text-sm">Username</label>
-              </div>
-              <div class="relative">
-                <input autocomplete="off" required id="password" name="password" type="password" class="rounded bg-gray-700 peer placeholder-transparent mt-2 h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" placeholder="Password" />
-                <label for="password" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-4 transition-all peer-focus:ms-0 peer-focus:-top-3 peer-focus:text-gray-300 peer-focus:text-sm">Password</label>
-              </div>
-              <div class="relative">
-                <input autocomplete="off" required id="repeatPassword" name="repeatPassword" type="password" class="rounded bg-gray-700 peer placeholder-transparent mt-2 h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" placeholder="Repeat password" />
-                <label for="repeatPassword" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-4 transition-all peer-focus:ms-0 peer-focus:-top-3 peer-focus:text-gray-300 peer-focus:text-sm">Repeat password</label>
-              </div>
-              <div class="relative">
-                <input autocomplete="off" required id="email" name="email" type="email" class="rounded bg-gray-700 peer placeholder-transparent mt-2 h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" placeholder="Email" />
-                <label for="email" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-4 transition-all peer-focus:ms-0 peer-focus:-top-3 peer-focus:text-gray-300 peer-focus:text-sm">Email</label>
-              </div>
-              <div class="relative">
-                <input autocomplete="off" required id="telefono" name="telefono" min="600000000" type="number" class="rounded bg-gray-700 peer placeholder-transparent mt-2 h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" placeholder="Teléfono" />
-                <label for="telefono" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-4 transition-all peer-focus:ms-0 peer-focus:-top-3 peer-focus:text-gray-300 peer-focus:text-sm">Teléfono</label>
-              </div>
-              <div class="relative">
-                <div>
-                    <input required autocomplete="off" name="sexo" type="radio" class="rounded border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300"/>
-                    <label for="sexo" class="ms-2 text-gray-300">Hombre</label>    
-                </div>
-                <div>
-                    <input required autocomplete="off" name="sexo" type="radio" class="rounded border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300"/>
-                    <label for="sexo" class="ms-2 text-gray-300">Mujer</label>
-                </div>
-                <div>
-                    <input required autocomplete="off" name="sexo" type="radio" class="rounded border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300"/>
-                    <label for="sexo" class="ms-2 text-gray-300 ">Otros</label>
+  <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+    <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+    </div>
+    <div class="relative px-4 py-10 bg-gray-800 shadow-lg sm:rounded-3xl sm:p-20">
+      <div class="max-w-md mx-auto">
+        <div>
+          <h1 class="text-2xl text-gray-200 font-semibold">Register</h1>
+        </div>
+        <div class="divide-y bg-gray-800">
+          <form #registerForm="ngForm" (ngSubmit)="submitForm(registerForm)" class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+            <div class="relative">
+              <input autocomplete="off" required id="username" name="username" type="text" class="rounded bg-gray-700 peer placeholder-transparent h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Username" [(ngModel)]="user.username" #username="ngModel"/>
+              <label for="username" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:ms-0 peer-focus:text-gray-300 peer-focus:text-sm">Username</label>
+              <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                <div *ngIf="username.errors?.['required']">
+                  Required Field!!
                 </div>
               </div>
-              <div class="relative">
-                <select required name="countrySelector" id="countrySelector" class="rounded p-1 bg-gray-700 text-gray-300">
-                    <option value="Spain" class="ms-2 text-gray-300">Spain</option>
-                    <option value="Andorra" class="ms-2 text-gray-300">Andorra</option>
-                    <option value="Germany" class="ms-2text-gray-300">Germany</option>
-                    <option value="Portugal" class="ms-2text-gray-300">Portugal</option>
-                </select>
-              </div>
-              <div class="relative">
-                <div>
-                    <input autocomplete="off" id="animalsCheckbox" name="animalsCheckbox" type="checkbox" class="rounded bg-gray-700 me-2 border-gray-300 text-gray-900"/>
-                    <label for="animalsCheckbox" class="text-gray-300">Animales</label>
+            </div>
+            <div class="relative">
+              <input autocomplete="off" required id="password" name="password" type="password" class="rounded bg-gray-700 peer placeholder-transparent mt-2 h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" placeholder="Password" [(ngModel)]="user.password" #password="ngModel"/>
+              <label for="password" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-4 transition-all peer-focus:ms-0 peer-focus:-top-3 peer-focus:text-gray-300 peer-focus:text-sm">Password</label>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div *ngIf="password.errors?.['required']">
+                  Required Field!!
                 </div>
-                <div>
-                    <input autocomplete="off" id="computersCheckbox" name="computersCheckbox" type="checkbox" class="rounded bg-gray-700 me-2 border-gray-300 text-gray-900"/>
+              </div>
+            </div>
+            <div class="relative">
+              <input autocomplete="off" required id="repeatPassword" name="repeatPassword" type="password" class="rounded bg-gray-700 peer placeholder-transparent mt-2 h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" placeholder="Repeat password" [(ngModel)]="user.repeatPassword" #repeatPassword="ngModel"/>
+              <label for="repeatPassword" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-4 transition-all peer-focus:ms-0 peer-focus:-top-3 peer-focus:text-gray-300 peer-focus:text-sm">Repeat password</label>
+              <div *ngIf="repeatPassword.invalid && (repeatPassword.dirty || repeatPassword.touched)">
+                <div *ngIf="repeatPassword.errors?.['required']">
+                  Required Field!!
+                </div>
+              </div>
+            </div>
+            <div class="relative">
+              <input autocomplete="off" required id="email" name="email" type="email" class="rounded bg-gray-700 peer placeholder-transparent mt-2 h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" placeholder="Email" [(ngModel)]="user.email" #email="ngModel"/>
+              <label for="email" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-4 transition-all peer-focus:ms-0 peer-focus:-top-3 peer-focus:text-gray-300 peer-focus:text-sm">Email</label>
+              <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="email.errors?.['required']">
+                  Required Field!!
+                </div>
+                <div *ngIf="email.errors?.['email']">
+                  Invalid Email Format!!
+                </div>
+              </div>
+            </div>
+            <div class="relative">
+              <input autocomplete="off" required id="phone" name="phone" min="600000000" type="number" class="rounded bg-gray-700 peer placeholder-transparent mt-2 h-10 w-full border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" placeholder="Teléfono" [(ngModel)]="user.phone" #telefono="ngModel"/>
+              <label for="telefono" class="ms-2 absolute left-0 -top-3.5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-300 peer-placeholder-shown:top-4 transition-all peer-focus:ms-0 peer-focus:-top-3 peer-focus:text-gray-300 peer-focus:text-sm">Teléfono</label>
+              <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                <div *ngIf="telefono.errors?.['required']">
+                  Required Field!!
+                </div>
+                <div *ngIf="telefono.errors?.['min']">
+                  Teléfono must be at least 9 digits!!
+                </div>
+              </div>
+            </div>
+            <div class="relative">
+              <div>
+                <input required autocomplete="off" name="gender" value="Hombre" type="radio" class="rounded border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" [(ngModel)]="user.gender"/>
+                <label for="gender" class="ms-2 text-gray-300">Hombre</label>    
+              </div>
+              <div>
+                <input required autocomplete="off" name="gender" value="Mujer" type="radio" class="rounded border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" [(ngModel)]="user.gender"/>
+                <label for="gender" class="ms-2 text-gray-300">Mujer</label>
+              </div>
+              <div>
+                <input required autocomplete="off" name="gender" value="Otros" type="radio" class="rounded border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-300" [(ngModel)]="user.gender"/>
+                <label for="gender" class="ms-2 text-gray-300">Otros</label>
+              </div>
+            </div>
+            <div class="relative">
+              <select required name="countrySelector" id="countrySelector" class="rounded p-1 bg-gray-700 text-gray-300" [(ngModel)]="user.country">
+                <option value="Spain" class="ms-2 text-gray-300">Spain</option>
+                <option value="Andorra" class="ms-2 text-gray-300">Andorra</option>
+                <option value="Germany" class="ms-2text-gray-300">Germany</option>
+                <option value="Portugal" class="ms-2text-gray-300">Portugal</option>
+              </select>
+            </div>
+            <div class="relative">
+              <div>
+                <input autocomplete="off" id="animalsCheckbox" name="animalsCheckbox" type="checkbox" class="rounded bg-gray-700 me-2 border-gray-300 text-gray-900" (change)="updateHobbies('Animales')"/>
+                <label for="animalsCheckbox" class="text-gray-300">Animales</label>
+              </div>
+              <div>
+                <input autocomplete="off" id="computersCheckbox" name="computersCheckbox" type="checkbox" class="rounded bg-gray-700 me-2 border-gray-300 text-gray-900" (change)="updateHobbies('Ordenadores')"/>
                 <label for="computersCheckbox" class="text-gray-300">Ordenadores</label>
-                </div>
-                <div>
-                    <input autocomplete="off" id="programmingCheckbox" name="programmingCheckbox" type="checkbox" class="rounded bg-gray-700 me-2 border-gray-300 text-gray-900"/>
-                    <label for="programmingCheckbox" class="text-gray-300">Programación</label>
-                </div>
               </div>
-              <div class="relative">
-                <div>
-                    <input autocomplete="off" id="termsCheckbox" name="termsCheckbox" type="checkbox" class="rounded bg-gray-700 me-2 border-gray-300 text-gray-900"/>
-                    <label for="termsCheckbox" class="text-gray-300 text-sm">Aceptar términos y condiciones</label>
-                </div>
+              <div>
+                <input autocomplete="off" id="programmingCheckbox" name="programmingCheckbox" type="checkbox" class="rounded bg-gray-700 me-2 border-gray-300 text-gray-900" (change)="updateHobbies('Programación')"/>
+                <label for="programmingCheckbox" class="text-gray-300">Programación</label>
               </div>
-              <div class="relative">
-                <button class="bg-cyan-500 text-white rounded-md px-2 py-1">Submit</button>
+            </div>
+            
+            <div class="relative">
+              <div>
+                <input autocomplete="off" id="termsCheckbox" name="termsCheckbox" type="checkbox" class="rounded bg-gray-700 me-2 border-gray-300 text-gray-900" [(ngModel)]="user.accept"/>
+                <label for="termsCheckbox" class="text-gray-300 text-sm">Aceptar términos y condiciones</label>
               </div>
-            </form>
-          </div>
+            </div>
+            <div class="relative">
+              <button type="submit" [disabled]="registerForm.invalid" class="bg-cyan-500 text-white rounded-md px-2 py-1">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+  </div>
 </div>

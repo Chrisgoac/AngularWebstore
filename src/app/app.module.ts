@@ -9,8 +9,10 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FavoriteProductComponent } from './components/favorite-product/favorite-product.component';
+import { MiniCarritoComponent } from './components/mini-carrito/mini-carrito.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,16 @@ import { FavoriteProductComponent } from './components/favorite-product/favorite
     CarritoComponent,
     LoginComponent,
     RegisterComponent,
-    FavoriteProductComponent
+    FavoriteProductComponent,
+    MiniCarritoComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

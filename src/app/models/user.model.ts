@@ -1,6 +1,7 @@
 export class User {
     _username: string;
     _password: string;
+    _repeatPassword: string;
     _email: string;
     _phone: number;
     _gender: string;
@@ -8,9 +9,10 @@ export class User {
     _hobbies: Array<String>;
     _accept: boolean;
 
-    constructor(username: string, password: string, email: string, phone: number, gender: string, country: string, hobbies: Array<String>, accept: boolean) {
+    constructor(username: string, password: string, repeatPassword: string, email: string, phone: number, gender: string, country: string, hobbies: Array<String>, accept: boolean) {
         this._username = username;
         this._password = password;
+        this._repeatPassword = repeatPassword;
         this._email = email;
         this._phone = phone;
         this._gender = gender;
@@ -25,6 +27,14 @@ export class User {
 
     public set username(value: string) {
         this._username = value;
+    }
+
+    public get repeatPassword(): string {
+        return this._repeatPassword;
+    }
+
+    public set repeatPassword(value: string) {
+        this._repeatPassword = value;
     }
 
     public get password(): string {

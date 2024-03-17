@@ -1,0 +1,57 @@
+<div class="min-h-screen bg-gray-900 py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+      <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+      <div class="relative px-4 py-10 bg-gray-800 shadow-lg sm:rounded-3xl sm:p-20">
+        <div class="max-w-md mx-auto">
+          <div>
+            <h1 class="text-2xl font-semibold text-gray-200">Contact Form</h1>
+          </div>
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+            <div class="relative">
+              <label for="name" class="text-gray-300">Nom:</label>
+              <input type="text" id="name" formControlName="name" class="rounded bg-gray-700 mt-1 w-full text-gray-300">
+              <div *ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)" class="text-red-500 text-sm">
+                <div *ngIf="contactForm.get('name')?.errors?.['required']">El nom és obligatori.</div>
+                <div *ngIf="contactForm.get('name')?.errors?.['minlength']">El nom ha de tenir com a mínim 6 caràcters.</div>
+              </div>
+            </div>
+  
+            <div class="relative">
+              <label for="queryType" class="text-gray-300">Tipus consulta:</label>
+              <select id="queryType" formControlName="queryType" class="rounded bg-gray-700 mt-1 w-full text-gray-300">
+                <option value="" disabled selected>Selecciona un tipus</option>
+                <option value="info">Informació</option>
+                <option value="comprar">Comprar</option>
+                <option value="devolucio">Devolució</option>
+              </select>
+              <div *ngIf="contactForm.get('queryType')?.invalid && contactForm.get('queryType')?.touched" class="text-red-500 text-sm">
+                El tipus de consulta és obligatori.
+              </div>
+            </div>
+  
+            <div class="relative">
+              <label for="province" class="text-gray-300">Província:</label>
+              <input type="text" id="province" formControlName="province" class="rounded bg-gray-700 mt-1 w-full text-gray-300">
+              <div *ngIf="contactForm.get('province')?.invalid && (contactForm.get('province')?.dirty || contactForm.get('province')?.touched)" class="text-red-500 text-sm">
+                <div *ngIf="contactForm.get('province')?.errors?.['required']">La província és obligatòria.</div>
+                <div *ngIf="contactForm.get('province')?.errors?.['invalidProvince']">La província ha de ser Barcelona, Tarragona o Girona.</div>
+              </div>
+            </div>
+  
+            <div class="relative">
+              <label>
+                <input type="checkbox" formControlName="acceptPolicy" class="rounded bg-gray-700 border-gray-300 text-gray-900">
+                <span class="text-gray-300">Acceptar Polítiques</span>
+              </label>
+              <div *ngIf="contactForm.get('acceptPolicy')?.invalid && contactForm.get('acceptPolicy')?.touched" class="text-red-500 text-sm">
+                Has d'acceptar les polítiques per continuar.
+              </div>
+            </div>
+  
+            <button type="submit" [disabled]="contactForm.invalid" class="bg-cyan-500 text-white rounded-md px-2 py-1 mt-4">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
